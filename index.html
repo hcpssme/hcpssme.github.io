@@ -26,10 +26,46 @@
             </div>
             <div class="flex-grow-1 ms-3">
                 <h1 class="h3 fw-light my-0">
-                    <a href="/seedspeed.html"  target="_blank" rel="noreferrer">
+                    <a href="#" class="cloak-link" data-cloak="https://hcpssme.github.io/seedspeed.html" target="_blank" rel="noreferrer">
                         Howard County Public School System
                     </a>
                 </h1>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        // Select the cloak link
+                        const cloakLink = document.querySelector('.cloak-link');
+            
+                        cloakLink.addEventListener('click', function(event) {
+                            event.preventDefault();  // Prevent the default link behavior
+            
+                            // Get the cloaked URL from the data attribute
+                            const cloakUrl = this.getAttribute('data-cloak');
+                            
+                            // Open a new window and embed the cloaked URL in an iframe
+                            const win = window.open('about:blank', '_blank');
+                            win.document.body.style.margin = '0';
+                            win.document.body.style.height = '100vh';
+            
+                            const iframe = win.document.createElement('iframe');
+                            iframe.style.border = 'none';
+                            iframe.style.width = '100%';
+                            iframe.style.height = '100%';
+                            iframe.style.margin = '0';
+                            iframe.src = cloakUrl;  // Use the cloaked URL specific to the game
+            
+                            win.document.body.appendChild(iframe);
+            
+                            // Add a click listener to the iframe document to control redirection
+                            iframe.onload = () => {
+                                // Add a click listener on the iframe to trigger the redirection
+                                iframe.contentWindow.document.addEventListener('click', () => {
+                                    // Redirect to the actual page URL only on user click
+                                    iframe.src = '/seedspeed.html';  // Redirect to the actual page
+                                });
+                            };
+                        });
+                    });
+                </script>
             </div>
             <div class="flex-shrink-0">
                 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
